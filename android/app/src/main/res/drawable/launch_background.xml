@@ -3,6 +3,29 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@android:color/white" />
 
+        <item
+            android:width="210dp"
+            android:height="195dp"
+            android:top="150dp"
+            android:gravity="top|center"
+            android:drawable="@drawable/app_logo"/>
+
+
+        <item
+            android:width="170dp"
+            android:height="70dp"
+            android:bottom="250dp"
+            android:gravity="bottom|center"
+            android:drawable="@drawable/top_rated_shows"/>
+
+        <item
+            android:width="280dp"
+            android:height="50dp"
+            android:bottom="100dp"
+            android:gravity="bottom|center"
+            android:drawable="@drawable/top_rated_text"/>    
+
+
     <!-- You can insert your own image assets here -->
     <!-- <item>
         <bitmap

@@ -12,13 +12,15 @@ class MessageContainer extends StatelessWidget {
     return Align(
       alignment: isCurrentUser ? Alignment.topRight : Alignment.topLeft,
       child: Container(
-        constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width/1.5),
+        constraints:
+            BoxConstraints(maxWidth: MediaQuery.of(context).size.width / 1.5),
         padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
         decoration: BoxDecoration(
-            color: isCurrentUser
-                ? PRIMARY_COLOR.withOpacity(0.06)
-                : Colors.black.withOpacity(0.06),
-            borderRadius: BorderRadius.circular(12)),
+          color: isCurrentUser
+              ? PRIMARY_COLOR.withOpacity(0.06)
+              : Colors.black.withOpacity(0.06),
+          borderRadius: BorderRadius.circular(12),
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[

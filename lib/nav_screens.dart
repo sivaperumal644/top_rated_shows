@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:top_rated_shows/component/bottom_bar.dart';
 import 'package:top_rated_shows/component/detail_screen_component.dart';
 import 'package:top_rated_shows/home_screen.dart';
+import 'package:top_rated_shows/screens/about_app_screen.dart';
+import 'package:top_rated_shows/screens/chat_screen.dart';
 
 class NavigateScreens extends StatefulWidget {
   final int selectedIndex;
@@ -64,9 +66,9 @@ class _NavigateScreensState extends State<NavigateScreens> {
           trailerLink: '',
         ));
       case 2:
-        return HomeScreen();
+        return ChatScreen();
       case 3:
-        return HomeScreen();
+        return AboutAppScreen();
       default:
         return Container();
     }

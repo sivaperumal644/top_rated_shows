@@ -66,47 +66,55 @@ class MovieListItem extends StatelessWidget {
                 ),
               ),
               Container(height: 2),
-              Row(
-                children: <Widget>[
-                  Text(
-                    'Premiere : ',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.black.withOpacity(0.75),
-                    ),
-                  ),
-                  Text(
-                    date,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  )
-                ],
-              ),
+              showPremiereDate(),
               Container(height: 2),
-              Row(
-                children: <Widget>[
-                  Icon(
-                    Icons.star,
-                    color: PRIMARY_COLOR,
-                  ),
-                  Container(width: 5),
-                  Text(
-                    '$rating/10',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
+              showRating(),
               Container(height: 16)
             ],
           )
         ],
       ),
+    );
+  }
+
+  Widget showRating() {
+    return Row(
+      children: <Widget>[
+        Icon(
+          Icons.star,
+          color: PRIMARY_COLOR,
+        ),
+        Container(width: 5),
+        Text(
+          '$rating/10',
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget showPremiereDate() {
+    return Row(
+      children: <Widget>[
+        Text(
+          'Premiere : ',
+          style: TextStyle(
+            fontSize: 14,
+            color: Colors.black.withOpacity(0.75),
+          ),
+        ),
+        Text(
+          date,
+          style: TextStyle(
+            fontSize: 14,
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        )
+      ],
     );
   }
 }

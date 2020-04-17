@@ -29,16 +29,17 @@ class BottomBar extends StatelessWidget {
     return Container(
       height: 80,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(24),
-            topRight: Radius.circular(24),
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: PRIMARY_COLOR.withOpacity(0.5),
-              blurRadius: 6,
-            )
-          ]),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(24),
+          topRight: Radius.circular(24),
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: PRIMARY_COLOR.withOpacity(0.5),
+            blurRadius: 6,
+          )
+        ],
+      ),
       child: Theme(
         data: ThemeData(
           splashColor: Colors.transparent,
