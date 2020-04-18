@@ -3,6 +3,9 @@ import 'package:top_rated_shows/component/custom_text_field.dart';
 import 'package:top_rated_shows/component/primary_button.dart';
 import 'package:top_rated_shows/component/secondary_button.dart';
 import 'package:top_rated_shows/constants/colors.dart';
+import 'package:top_rated_shows/screens/forgot_password_screen/forgot_password_screen.dart';
+import 'package:top_rated_shows/screens/nav_screens.dart';
+import 'package:top_rated_shows/screens/signup_screen/signup_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -43,14 +46,36 @@ class LoginScreen extends StatelessWidget {
                       Container(height: 24),
                       PrimaryButton(
                         buttonText: 'Login',
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  NavigateScreens(selectedIndex: 0),
+                            ),
+                          );
+                        },
                       ),
                       Container(height: 16),
-                      forgotPasswordButton(),
+                      forgotPasswordButton(() {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ForgotPasswordScreen(),
+                          ),
+                        );
+                      }),
                       Container(height: 16),
                       SecondaryButton(
                         buttonText: 'Sign up',
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SignUpScreen(),
+                            ),
+                          );
+                        },
                       ),
                       Container(
                         height: 44,
@@ -66,13 +91,13 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Widget forgotPasswordButton() {
+  Widget forgotPasswordButton(Function onPressed) {
     return Container(
       width: double.infinity,
       child: FlatButton(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        padding: EdgeInsets.symmetric(vertical: 12),
-        onPressed: () {},
+        padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+        onPressed: onPressed,
         child: Text(
           'Forgot Password?',
           style: TextStyle(

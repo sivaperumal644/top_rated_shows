@@ -27,7 +27,7 @@ class DetailsScreen extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(24, 24, 24, 0),
       child: ListView(
         children: <Widget>[
-          backArrow(context),
+          BackButton(),
           Container(height: 16),
           imageWidget(imgLink),
           Container(height: 24),
@@ -102,21 +102,6 @@ class DetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget backArrow(BuildContext context) {
-    return Align(
-      alignment: Alignment.topLeft,
-      child: IconButton(
-        onPressed: () {
-          Navigator.pop(context);
-        },
-        icon: Icon(
-          Icons.arrow_back,
-          color: Colors.black,
-        ),
-      ),
-    );
-  }
-
   Widget imageWidget(String imgUrl) {
     return Column(
       children: <Widget>[
@@ -141,6 +126,24 @@ class DetailsScreen extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class BackButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.topLeft,
+      child: IconButton(
+        onPressed: () {
+          Navigator.pop(context);
+        },
+        icon: Icon(
+          Icons.arrow_back,
+          color: Colors.black,
+        ),
+      ),
     );
   }
 }

@@ -3,7 +3,9 @@ import 'package:top_rated_shows/component/bottom_bar.dart';
 import 'package:top_rated_shows/component/detail_screen_component.dart';
 import 'package:top_rated_shows/home_screen.dart';
 import 'package:top_rated_shows/screens/about_app_screen.dart';
-import 'package:top_rated_shows/screens/chat_screen.dart';
+import 'package:top_rated_shows/screens/chat_screen/chat_screen.dart';
+import 'package:top_rated_shows/screens/movies_screen/movies_screen.dart';
+import 'package:top_rated_shows/screens/tvshows_screen/tvshow_screen.dart';
 
 class NavigateScreens extends StatefulWidget {
   final int selectedIndex;
@@ -51,20 +53,9 @@ class _NavigateScreensState extends State<NavigateScreens> {
   Widget layout() {
     switch (selectedIndex) {
       case 0:
-        return HomeScreen();
+        return MoviesScreen();
       case 1:
-        return Scaffold(
-            body: DetailsScreen(
-          imgLink:
-              'https://m.media-amazon.com/images/M/MV5BNDE4OTMxMTctNmRhYy00NWE2LTg3YzItYTk3M2UwOTU5Njg4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX45_CR0,0,45,67_AL_.jpg',
-          name: 'The Shawshank Redemption',
-          date: '1994',
-          rank: '1',
-          rating: '9.2',
-          description:
-              'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.',
-          trailerLink: '',
-        ));
+        return TVShowScreen();
       case 2:
         return ChatScreen();
       case 3:

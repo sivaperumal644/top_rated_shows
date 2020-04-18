@@ -31,6 +31,7 @@ class CustomAppBar extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
+          Container(height: 20),
           Text(
             isMovies ? 'Movies' : 'TV Shows',
             style: TextStyle(
