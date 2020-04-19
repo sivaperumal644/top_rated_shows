@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:top_rated_shows/authentication/authentication_bloc.dart';
+import 'package:top_rated_shows/authentication/authentication_states.dart';
+import 'package:top_rated_shows/screens/login_screen/bloc/login_bloc.dart';
+import 'package:top_rated_shows/screens/login_screen/login_screen.dart';
+import 'package:top_rated_shows/screens/nav_screen/bloc/nav_bloc.dart';
+import 'package:top_rated_shows/screens/nav_screen/nav_screens.dart';
 
 class AppRoutes {
   static const String LOGIN_SCREEN = "login_screen";
@@ -35,7 +42,14 @@ Route<dynamic> getRoute(RouteSettings settings) {
   }
 }
 
-Route _buildLoginScreen() {}
+Route _buildLoginScreen() {
+  return MaterialPageRoute(
+    builder: (context) => addAuthBloc(
+      context,
+      PageBuilder.buildLoginScreen(),
+    ),
+  );
+}
 
 Route _buildSignUpScreen() {}
 
@@ -43,7 +57,14 @@ Route _buildForgotPasswordScreen() {}
 
 Route _buildOTPScreen() {}
 
-Route _buildNavScreens() {}
+Route _buildNavScreens() {
+  return MaterialPageRoute(
+    builder: (context) => addAuthBloc(
+      context,
+      PageBuilder.buildNavScreens(),
+    ),
+  );
+}
 
 Route _buildMoviesScreen() {}
 
@@ -52,3 +73,53 @@ Route _buildTVShowScreen() {}
 Route _buildChatScreen() {}
 
 Route _buildAboutAppScreen() {}
+
+class PageBuilder {
+  static Widget buildLoginScreen() {
+    return BlocProvider(
+      create: (context) {
+        AuthenticationBloc authBloc =
+            BlocProvider.of<AuthenticationBloc>(context);
+        return LoginBloc(authBloc);
+      },
+      child: LoginScreen(),
+    );
+  }
+
+  static Widget buildNavScreens() {
+    return BlocProvider(
+      create: (context) {
+        AuthenticationBloc authBloc =
+            BlocProvider.of<AuthenticationBloc>(context);
+        return NavBloc(authBloc);
+      },
+      child: NavigateScreens(),
+    );
+  }
+}
+
+addAuthBloc(BuildContext context, Widget widget) {
+  return BlocListener(
+    bloc: BlocProvider.of<AuthenticationBloc>(context),
+    listener: (context, state) {
+      if (state is UnAuthenticatedState) {
+        while (Navigator.canPop(context)) {
+          Navigator.pop(context);
+        }
+        Navigator.pushReplacementNamed(context, AppRoutes.LOGIN_SCREEN);
+      }
+      if (state is AuthenticatedState) {
+        while (Navigator.canPop(context)) {
+          Navigator.pop(context);
+        }
+        Navigator.pushReplacementNamed(context, AppRoutes.NAV_SCREEN);
+      }
+    },
+    child: BlocBuilder(
+      bloc: BlocProvider.of<AuthenticationBloc>(context),
+      builder: (context, state) {
+        return widget;
+      },
+    ),
+  );
+}

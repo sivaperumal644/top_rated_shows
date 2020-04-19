@@ -1,11 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:top_rated_shows/screens/login_screen/login_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:top_rated_shows/authentication/authentication_bloc.dart';
+import 'package:top_rated_shows/authentication/authentication_events.dart';
+import 'package:top_rated_shows/routes.dart';
 
-main() => runApp(MyApp());
+main() => runApp(
+      BlocProvider<AuthenticationBloc>(
+        create: (BuildContext context) {
+          return AuthenticationBloc()
+            ..add(
+              AppStartedEvent(),
+            );
+        },
+        child: MyApp(),
+      ),
+    );
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: LoginScreen());
+    return MaterialApp(
+      onGenerateRoute: getRoute,
+      home: addAuthBloc(context, Container()),
+    );
   }
 }

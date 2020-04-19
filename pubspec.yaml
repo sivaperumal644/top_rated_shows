@@ -28,6 +28,7 @@ dependencies:
   bloc: ^3.0.0
   dio: ^3.0.9
   json_annotation: ^3.0.1
+  equatable: ^1.1.1
 
 
 dev_dependencies: 
